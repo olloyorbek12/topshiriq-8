@@ -1,0 +1,31 @@
+{
+  "name": "logistics-blockchain-system",
+  "version": "8.0.0",
+  "description": "LogiChain Trace - Premium Blockchain Supply Chain Audit System by olloyorbek",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5177",
+    "build": "npm run compile && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4177",
+    "chain": "npx --yes ganache@7.9.2 --chain.chainId 1337 --wallet.totalAccounts 10 --wallet.defaultBalance 1000 --server.host 127.0.0.1 --server.port 8545",
+    "compile": "node scripts/compile.mjs",
+    "deploy:local": "npm run compile && node scripts/deploy.mjs",
+    "deploy:network": "npm run compile && node scripts/deploy.mjs"
+  },
+  "keywords": [
+    "blockchain",
+    "web3",
+    "logistics",
+    "supply-chain",
+    "tracking"
+  ],
+  "author": "olloyorbek",
+  "license": "MIT",
+  "dependencies": {
+    "web3": "^4.16.0"
+  },
+  "devDependencies": {
+    "solc": "^0.8.30",
+    "vite": "^6.3.1"
+  }
+}

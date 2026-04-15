@@ -1,0 +1,8 @@
+{
+  "deployed": false,
+  "networkName": "Demo Ledger",
+  "chainId": 1337,
+  "rpcUrl": "http://127.0.0.1:8545",
+  "address": "",
+  "artifactPath": "LogisticsChain.json"
+}

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mahsulotlarni blockchain orqali kuzatish va ta'minot zanjirini audit qilish tizimi"
+    />
+    <title>LogiChain Trace</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <a class="brand" href="#app" aria-label="LogiChain Trace Premium">
+          <span class="brand-mark">LC</span>
+          <span>
+            <strong>LogiChain Trace</strong>
+            <small>Premium Blockchain Audit System</small>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Navigatsiya">
+          <a href="#register">Ro'yxatga olish</a>
+          <a href="#track">Kuzatuv</a>
+          <a href="#owner">Egalik</a>
+          <a href="#audit">Audit</a>
+        </nav>
+      </header>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <img
+          class="hero-photo"
+          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80"
+          alt="Logistika ombori"
+        />
+        <div class="hero-overlay"></div>
+        <div class="hero-copy">
+          <p class="eyebrow">Enterprise Web3 Solution</p>
+          <h1 id="hero-title">Mahsulotlar yo'lini Blockchain bilan nazorat qiling.</h1>
+          <p>
+            Ishlab chiqaruvchidan buyurtmachigacha bo'lgan har bir qadam o'zgarmas 
+            ledger tizimida muhrlanadi.
+          </p>
+          <div class="hero-actions">
+            <button id="connect-wallet" class="button primary" type="button">Hamyonni ulash</button>
+            <button id="demo-reset" class="button light" type="button">Tizimni tozalash</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-bar" aria-label="Tizim holati">
+        <div>
+          <span>Tizim rejimi</span>
+          <strong id="mode-status">Yuklanmoqda...</strong>
+        </div>
+        <div>
+          <span>Hamyon manzili</span>
+          <strong id="current-account">Bog'lanmagan</strong>
+        </div>
+        <div>
+          <span>Tarmoq</span>
+          <strong id="network-status">Noma'lum</strong>
+        </div>
+        <div>
+          <span>Kontrakt manzili</span>
+          <strong id="contract-address">Sozlanmagan</strong>
+        </div>
+      </section>
+
+      <div id="app-alert" class="alert" hidden></div>
+
+      <section class="metrics" aria-label="Statistika">
+        <div class="metric">
+          <span>Jami mahsulotlar</span>
+          <strong id="product-count">0</strong>
+        </div>
+        <div class="metric">
+          <span>Audit yozuvlari</span>
+          <strong id="event-count">0</strong>
+        </div>
+        <div class="metric">
+          <span>Yetkazilgan</span>
+          <strong id="delivered-count">0</strong>
+        </div>
+        <div class="metric">
+          <span>Yo'lda (Transit)</span>
+          <strong id="transit-count">0</strong>
+        </div>
+      </section>
+
+      <main class="workspace">
+        <section id="register" class="panel" aria-labelledby="register-title">
+          <div class="panel-heading">
+            <p>Yangi obyekt kiritish</p>
+            <h2 id="register-title">Mahsulotni kiritish</h2>
+          </div>
+          <div class="form-grid">
+            <label>
+              Seriya raqami
+              <input id="serial-number" type="text" value="SN-2026-0001" />
+            </label>
+            <label>
+              Mahsulot nomi
+              <input id="product-name" type="text" value="Premium Smart Sensor" />
+            </label>
+            <label>
+              Kategoriya
+              <input id="product-category" type="text" value="IoT Industry" />
+            </label>
+            <label>
+              Ishlab chiqarilgan joy
+              <input id="product-origin" type="text" value="Toshkent HQ" />
+            </label>
+            <label>
+              Boshlang'ich egasi (Address)
+              <input id="initial-owner" type="text" placeholder="0x..." />
+            </label>
+            <label>
+              Dastlabki lokatsiya
+              <input id="initial-location" type="text" value="Bosh ombor" />
+            </label>
+            <label class="wide">
+              Metadata Hash / CID
+              <input id="metadata-cid" type="text" value="ipfs://bafy-trace-001" />
+            </label>
+          </div>
+          <button id="register-product" class="button primary" type="button">
+            Blockchain'ga muhrlash
+          </button>
+          <div class="generated">
+            <span>Product Unique ID</span>
+            <code id="generated-id">Hali yaratilmadi</code>
+            <button id="copy-generated" class="button secondary" type="button">Nusxa olish</button>
+          </div>
+        </section>
+
+        <section id="track" class="panel" aria-labelledby="track-title">
+          <div class="panel-heading">
+            <p>Real-vaqt monitoring</p>
+            <h2 id="track-title">Holatni yangilash</h2>
+          </div>
+          <label>
+            Product ID
+            <input id="track-product-id" type="text" placeholder="0x..." />
+          </label>
+          <div class="form-grid compact-grid">
+            <label>
+              Yetkazib berish statusi
+              <select id="delivery-status">
+                <option value="0">Yaratildi</option>
+                <option value="1">Omborda</option>
+                <option value="2">Yo'lda</option>
+                <option value="3">Bojxonada</option>
+                <option value="4">Yetkazildi</option>
+                <option value="5">Bekor qilindi</option>
+              </select>
+            </label>
+            <label>
+              Hozirgi joylashuvi
+              <input id="current-location" type="text" value="Markaziy logistika" />
+            </label>
+            <label class="wide">
+              Qo'shimcha izoh
+              <input id="status-note" type="text" value="Tizim orqali avtomatik yangilandi" />
+            </label>
+          </div>
+          <button id="update-status" class="button primary" type="button">Statusni saqlash</button>
+          <output id="track-result" class="output">Harakat kutilmoqda...</output>
+        </section>
+
+        <section id="owner" class="panel" aria-labelledby="owner-title">
+          <div class="panel-heading">
+            <p>Egalik huquqi</p>
+            <h2 id="owner-title">Egasini o'zgartirish</h2>
+          </div>
+          <div class="form-grid">
+            <label>
+              Product ID
+              <input id="owner-product-id" type="text" placeholder="0x..." />
+            </label>
+            <label>
+              Yangi egasi (Address)
+              <input id="new-owner" type="text" placeholder="0x..." />
+            </label>
+            <label>
+              Transfer joyi
+              <input id="owner-location" type="text" value="Qabul qilish punkti" />
+            </label>
+            <label>
+              Transfer sababi
+              <input id="owner-note" type="text" value="Sotuv shartnomasi asosida" />
+            </label>
+          </div>
+          <button id="transfer-owner" class="button primary" type="button">Egalikni o'tkazish</button>
+          <output id="owner-result" class="output">Transfer kutilmoqda...</output>
+        </section>
+
+        <section class="panel accent" aria-labelledby="verify-title">
+          <div class="panel-heading">
+            <p>Xavfsizlik & Audit</p>
+            <h2 id="verify-title">Haqiqiylikni tekshirish</h2>
+          </div>
+          <label>
+            Product ID
+            <input id="verify-product-id" type="text" placeholder="0x..." />
+          </label>
+          <button id="verify-product" class="button primary" type="button">Blockchain'dan qidirish</button>
+          <div class="form-grid compact-grid">
+            <label>
+              Audit xulosasi
+              <select id="authenticity-value">
+                <option value="true">Haqiqiy (Verified)</option>
+                <option value="false">Shubhali (Suspected)</option>
+              </select>
+            </label>
+            <label>
+              Audit izohi
+              <input id="authenticity-note" type="text" value="Sifat nazorati yakunlandi" />
+            </label>
+          </div>
+          <button id="set-authenticity" class="button secondary" type="button">Audit xulosasini yozish</button>
+          <output id="verify-result" class="verify-result">Xulosa kutilmoqda...</output>
+        </section>
+
+        <section class="panel registry-panel" aria-labelledby="registry-title">
+          <div class="panel-heading row-heading">
+            <div>
+              <p>Ochiq reyestr</p>
+              <h2 id="registry-title">Barcha mahsulotlar</h2>
+            </div>
+            <button id="refresh-registry" class="button secondary" type="button">Ma'lumotlarni yangilash</button>
+          </div>
+          <label>
+            Reyestrdan qidirish
+            <input id="registry-search" type="search" placeholder="ID, nom yoki egasi bo'yicha..." />
+          </label>
+          <div id="registry-list" class="registry-list" aria-live="polite"></div>
+        </section>
+
+        <section id="audit" class="panel audit-panel" aria-labelledby="audit-title">
+          <div class="panel-heading row-heading">
+            <div>
+              <p>Audit Trail</p>
+              <h2 id="audit-title">O'zgarishlar tarixi</h2>
+            </div>
+            <button id="export-demo" class="button secondary" type="button">JSON Export</button>
+          </div>
+          <label>
+            Product ID
+            <input id="audit-product-id" type="text" placeholder="0x..." />
+          </label>
+          <button id="audit-product" class="button primary" type="button">Auditni ko'rish</button>
+          <div id="audit-list" class="audit-list" aria-live="polite"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>&copy; 2026 LogiChain Trace Premium Edition</p>
+        <div class="auditor-badge">
+          System Auditor: <span>olloyorbek</span>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
