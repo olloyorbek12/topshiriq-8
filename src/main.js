@@ -200,7 +200,7 @@ async function connectWallet() {
       state.mode = "demo";
       state.account = state.demo.account;
       await refreshUi();
-      showAlert("MetaMask topilmadi. Demo Ledger rejimi ishlayapti.", "success");
+      showAlert("Premium Ledger Mode: MetaMask topilmadi, demo rejim faollashtirildi.", "success");
       return;
     }
 
@@ -216,7 +216,7 @@ async function connectWallet() {
       state.config = config;
       state.web3 = web3;
       state.contract = new web3.eth.Contract(config.abi, config.address);
-      showAlert("Wallet ulandi. Real blockchain kontrakti faol.", "success");
+      showAlert("Blockchain Connected: Tizim to'liq nazorat rejimida.", "success");
     } else {
       state.mode = "demo";
       showAlert("Wallet ulandi. Kontrakt deploy qilinmagani uchun demo rejim faol.", "success");
